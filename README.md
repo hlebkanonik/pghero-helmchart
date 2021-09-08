@@ -15,7 +15,7 @@ kubectl create secret generic pghero \
 helm repo add custom-pghero https://cyberglamdring.github.io/pghero-helmchart/ && helm repo update 
 ```
 
-3. Fill values.yaml
+3. Fill in values.yaml if necessary
 
 4. Install PGHERO helm chart
 
