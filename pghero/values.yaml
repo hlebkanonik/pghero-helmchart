@@ -2,7 +2,7 @@
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
-# if secretName exists, than below database and credential fields are not valid
+# If secretName exists, then below database and credential fields are not valid
 secretName: pghero
 database:
   user: admin
