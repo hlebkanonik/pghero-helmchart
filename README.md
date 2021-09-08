@@ -20,7 +20,7 @@ helm repo add custom-pghero https://cyberglamdring.github.io/pghero-helmchart/ &
 4. Install PGHERO helm chart
 
 ```bash
-helm install pghero -f pghero-helmchart-values.yaml pghero/pghero 
+helm install pghero -f pghero-helmchart-values.yaml custom-pghero/pghero 
 ```
 
 # Removal
