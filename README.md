@@ -30,3 +30,6 @@ To remove PGHERO use following command:
 ```bash
 helm unistall pghero
 ```
+
+---
+Sources: https://github.com/ankane/pghero
