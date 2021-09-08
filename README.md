@@ -1,4 +1,5 @@
-# Deployment
+# PGHERO Helm Chart
+## Deployment
 
 1. Create Kubernetes secret for PGHERO
 
@@ -23,7 +24,7 @@ helm repo add custom-pghero https://cyberglamdring.github.io/pghero-helmchart/ &
 helm install pghero -f pghero-helmchart-values.yaml custom-pghero/pghero 
 ```
 
-# Removal
+## Removal
 
 To remove PGHERO use following command: 
 
