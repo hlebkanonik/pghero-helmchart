@@ -4,7 +4,7 @@ entries:
   - apiVersion: v2
     appVersion: 1.16.0
     created: "2021-09-08T11:31:43.049479+03:00"
-    description: A Helm chart for Kubernetes
+    description: A performance dashboard for Postgres
     digest: 2977bf5dde4563f6a0091d7cd079f59b98fbedc7532afbed0f40a05977f9d475
     name: pghero
     type: application
