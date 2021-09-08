@@ -1,0 +1,89 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "pghero.fullname" . }}
+  labels:
+    {{- include "pghero.labels" . | nindent 4 }}
+spec:
+  {{- if not .Values.autoscaling.enabled }}
+  replicas: 1
+  {{- end }}
+  selector:
+    matchLabels:
+      {{- include "pghero.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      {{- with .Values.podAnnotations }}
+      annotations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      labels:
+        {{- include "pghero.selectorLabels" . | nindent 8 }}
+    spec:
+      {{- with .Values.imagePullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      serviceAccountName: {{ include "pghero.serviceAccountName" . }}
+      securityContext:
+        {{- toYaml .Values.podSecurityContext | nindent 8 }}
+      containers:
+      - env:
+        - name: DATABASE_URL
+        {{ if .Values.secretName }}
+          valueFrom:
+            secretKeyRef:
+              name: "{{ .Values.secretName }}"
+              key: "database_url"
+        {{ else }}
+          value: "postgres://{{ .Values.database.user }}:{{ .Values.database.password }}@{{ .Values.database.url }}:{{ .Values.database.port }}/{{ .Values.database.dbName }}"
+        {{ end }}
+        - name: PGHERO_USERNAME
+        {{ if .Values.secretName }}
+          valueFrom:
+            secretKeyRef:
+              name: "{{ .Values.secretName }}"
+              key: "username"
+        {{ else }}
+          value: "{{ .Values.pgheroUser }}"
+        {{ end }}
+        - name: PGHERO_PASSWORD
+        {{ if .Values.secretName }}
+          valueFrom:
+            secretKeyRef:
+              name: "{{ .Values.secretName }}"
+              key: "password"
+        {{ else }}
+          value: "{{ .Values.pgheroPassword }}"
+        {{ end }}
+        name: {{ .Chart.Name }}
+        securityContext:
+          {{- toYaml .Values.securityContext | nindent 12 }}
+        image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+        imagePullPolicy: {{ .Values.image.pullPolicy }}
+        ports:
+          - name: http
+            containerPort: 8080
+            protocol: TCP
+        # livenessProbe:
+        #   httpGet:
+        #     path: /
+        #     port: http
+        # readinessProbe:
+        #   httpGet:
+        #     path: /
+        #     port: http
+        resources:
+          {{- toYaml .Values.resources | nindent 12 }}
+      {{- with .Values.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
