@@ -5,11 +5,11 @@
 # If secretName exists, then below database and credential fields are not valid
 secretName: pghero
 database:
-  user: admin
-  password: StrongPassword
-  url: database.url.com
-  port: 5432
-  dbName: dbname
+  user:
+  password:
+  url:
+  port:
+  dbName:
 pgheroUser:
 pgheroPassword:
   
