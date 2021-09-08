@@ -1,6 +1,6 @@
 # Deployment
 
-Create Kubernetes secret for PGHERO
+1. Create Kubernetes secret for PGHERO
 
 ```bash
 kubectl create secret generic pghero \
@@ -9,25 +9,24 @@ kubectl create secret generic pghero \
   --from-literal=password='StrongPassword123'
 ```
 
-Deploy PGHERO
+2. Add custom Helm repository repository
 
 ```bash
-kubectl apply -f pghero-deployment.yaml
+helm repo add custom-pghero https://cyberglamdring.github.io/pghero-helmchart/ && helm repo update 
 ```
 
-Expose servie for deployment:
+3. Fill values.yaml
+
+4. Install PGHERO helm chart
 
 ```bash
-kubectl expose deployment/pghero 
+helm install pghero -f pghero-helmchart-values.yaml pghero/pghero 
 ```
-
-*Add flag `--type=NodePort` for expousing Kubernetes Node Port*
-
 
 # Removal
 
 To remove PGHERO use following command: 
 
 ```bash
-kubectl delete deployment/pghero svc/pghero
+helm unistall pghero
 ```
