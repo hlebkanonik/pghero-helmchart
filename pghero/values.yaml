@@ -12,7 +12,7 @@ database:
   dbName:
 pgheroUser:
 pgheroPassword:
-  
+
 
 image:
   repository: ankane/pghero
@@ -49,6 +49,7 @@ securityContext: {}
 service:
   type: ClusterIP
   port: 8080
+  annotations: {}
 
 ingress:
   enabled: false
