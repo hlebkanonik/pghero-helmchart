@@ -4,6 +4,7 @@ metadata:
   name: {{ include "pghero.fullname" . }}
   labels:
     {{- include "pghero.labels" . | nindent 4 }}
+  {{- with .Values.service.annotations }}
   annotations:
     {{- include "pghero.labels" . | nindent 4 }}
 spec:
