@@ -4,6 +4,8 @@ metadata:
   name: {{ include "pghero.fullname" . }}
   labels:
     {{- include "pghero.labels" . | nindent 4 }}
+  annotations:
+    {{- include "pghero.labels" . | nindent 4 }}
 spec:
   type: {{ .Values.service.type }}
   ports:
