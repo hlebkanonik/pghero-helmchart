@@ -7,6 +7,7 @@ metadata:
   {{- with .Values.service.annotations }}
   annotations:
     {{- include "pghero.labels" . | nindent 4 }}
+  {{- end }}
 spec:
   type: {{ .Values.service.type }}
   ports:
