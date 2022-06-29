@@ -13,7 +13,7 @@ kubectl create secret generic pghero \
 2. Add custom Helm Chart repository
 
 ```bash
-helm repo add custom-pghero https://gl-canon.github.io/pghero-helmchart/ && helm repo update 
+helm repo add custom-pghero https://gl-canon.github.io/pghero-helmchart && helm repo update 
 ```
 
 3. Fill in values.yaml if necessary. If `secretName` exists, then below `database`, `pgheroUser` and `pgheroUser` fields are not valid
@@ -21,7 +21,9 @@ helm repo add custom-pghero https://gl-canon.github.io/pghero-helmchart/ && helm
 4. Install PGHERO helm chart
 
 ```bash
-helm install pghero -f pghero-helmchart-values.yaml custom-pghero/pghero 
+helm install pghero \
+  --set secretName=pghero \
+  custom-pghero/pghero 
 ```
 ## Configuration
 
@@ -37,6 +39,7 @@ The following table lists the configurable parameters of the PgHero chart and th
 | `database.dbName` | DataBase name | `""` |
 | `pgheroUser` | Login user name | `""` |
 | `pgheroPassword` | Login user password | `""` |
+| `nodeSelector` | Configurable nodeSelector so that you can target specific nodes for your Elasticsearch cluster | `"{}"` |
 
 ## Removal
 

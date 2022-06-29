@@ -5,11 +5,11 @@
 # If secretName exists, then below database and credential fields are not valid
 secretName: pghero
 database:
-  user:
-  password:
-  url:
+  user: postgresql
+  password: StrongPassword123
+  url: postgresql.default.svc.local
   port: 5432
-  dbName:
+  dbName: postgresql
 pgheroUser:
 pgheroPassword:
 
@@ -18,7 +18,7 @@ image:
   repository: ankane/pghero
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: v2.8.1
+  tag: v2.8.3
 
 imagePullSecrets: []
 nameOverride: ""

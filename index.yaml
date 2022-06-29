@@ -2,13 +2,13 @@ apiVersion: v1
 entries:
   pghero:
   - apiVersion: v2
-    appVersion: 1.16.0
-    created: "2021-09-08T11:31:43.049479+03:00"
-    description: A performance dashboard for Postgres
-    digest: 2977bf5dde4563f6a0091d7cd079f59b98fbedc7532afbed0f40a05977f9d475
+    appVersion: 2.8.3
+    created: "2022-06-30T01:33:31.109921+04:00"
+    description: A Helm chart for Kubernetes
+    digest: 924223d0ceb42af45d37c20d25b561dd57f6fbd1adff56dd1e36199728b0db80
     name: pghero
     type: application
     urls:
-    - https://cyberglamdring.github.io/pghero-helmchart/pghero-v2.8.1.tgz
-    version: v2.8.1
-generated: "2021-09-08T11:31:43.046073+03:00"
+    - https://gl-canon.github.io/pghero-helmchart/pghero-v2.8.3.tgz
+    version: v2.8.3
+generated: "2022-06-30T01:33:31.106901+04:00"
