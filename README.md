@@ -13,7 +13,7 @@ kubectl create secret generic pghero \
 2. Add custom Helm Chart repository
 
 ```bash
-helm repo add custom-pghero https://cyberglamdring.github.io/pghero-helmchart/ && helm repo update 
+helm repo add custom-pghero https://gl-canon.github.io/pghero-helmchart/ && helm repo update 
 ```
 
 3. Fill in values.yaml if necessary. If `secretName` exists, then below `database`, `pgheroUser` and `pgheroUser` fields are not valid
