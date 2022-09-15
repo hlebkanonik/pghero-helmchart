@@ -1,4 +1,7 @@
 # PgHero Helm Chart
+## Description
+Easy to use Helm Chart for Kubernetes 1.17+
+
 ## Deployment
 
 1. Create Kubernetes secret for PGHERO
